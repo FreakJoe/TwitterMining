@@ -15,3 +15,6 @@ class Config():
 
 		else:
 			self.values = None
+
+	def url(self):
+		return self.values['url']
