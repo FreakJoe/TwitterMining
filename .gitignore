@@ -16,3 +16,4 @@ _mailinglist
 .idea/
 tmp/
 db_repository/
+config.ini
