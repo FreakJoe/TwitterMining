@@ -10,6 +10,9 @@ ACESS_TOKEN_SECRET = config.get('access_token_secret')
 
 class StreamListener(tweepy.StreamListener):
 	def on_status(self, status):
+		if status.lang != 'en':
+			return
+			
 		user = self.fix_encoding(status.user.name)
 		text = self.fix_encoding(status.text)
 		hashtags = self.get_hashtags(text)
