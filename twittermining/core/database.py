@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from tweet import Tweet, Base
-from config import config
+from .tweet import Tweet, Base
+from .config import config
 
 class Database():
 	def __init__(self):

@@ -9,7 +9,7 @@ def call_genderize(name):
 def first_name_gender(name):
 	"""Returns the probable gender(s) of a (list of) name(s)"""
 	# Ensure the API is given valid input
-	if (type(name) != str && type(name) != list) || (type(name) == list && len(name) > 10):
+	if (type(name) != str and type(name) != list) or (type(name) == list and len(name) > 10):
 		return None
 
 	gender = {}

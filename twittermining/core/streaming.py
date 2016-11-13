@@ -1,7 +1,7 @@
 import re
 import tweepy
-from config import config
-from database import database
+from .config import config
+from .database import database
 
 CONSUMER_KEY = config.get('consumer_key')
 CONSUMER_SECRET = config.get('consumer_secret')
@@ -28,10 +28,11 @@ class StreamListener(tweepy.StreamListener):
 		hashtags = re.findall("#\S*", text)
 		return hashtags
 
-auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-auth.set_access_token(ACCESS_TOKEN, ACESS_TOKEN_SECRET)
-api = tweepy.API(auth)
+def stream_into_db(track=['twitter']):
+	auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+	auth.set_access_token(ACCESS_TOKEN, ACESS_TOKEN_SECRET)
+	api = tweepy.API(auth)
 
-stream_listener = StreamListener()
-stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
-stream.filter(track=['#Election2016'])
+	stream_listener = StreamListener()
+	stream = tweepy.Stream(auth=api.auth, listener=stream_listener)
+	stream.filter(track=track)
