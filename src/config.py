@@ -9,12 +9,11 @@ class Config():
 		self.read_values()
 
 	def read_values(self):
-		if 'db' in self.config.sections():
-			for option in self.config.options('db'):
-				self.values[option] = self.config.get('db', option)
+		for section in self.config.sections():
+			for option in self.config.options(section):
+				self.values[option] = self.config.get(section, option)
 
-		else:
-			self.values = None
+	def get(self, key):
+		return self.values[key]
 
-	def url(self):
-		return self.values['url']
+config = Config()

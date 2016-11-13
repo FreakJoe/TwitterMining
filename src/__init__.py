@@ -1,3 +1,2 @@
-from database import Database
-
-db = Database()
+from database import database
+from config import config
