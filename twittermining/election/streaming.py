@@ -1,3 +1,4 @@
 from ..core.streaming import stream_into_db
 
-stream_into_db(['#Election2016'])
+def stream():
+	stream_into_db(['#Election2016'])

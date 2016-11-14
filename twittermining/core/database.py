@@ -18,4 +18,10 @@ class Database():
 		self.session.add(new_tweet)
 		self.session.commit()
 
+	def get_tweets(self, limit=None):
+		if limit:
+			return
+
+		return self.session.query(Tweet).all()
+
 database = Database()

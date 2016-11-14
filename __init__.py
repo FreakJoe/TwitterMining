@@ -1,2 +1,2 @@
-from twittermining.core import *
-from twittermining.election import *
+from TwitterMining.core import *
+from TwitterMining.election import *

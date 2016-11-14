@@ -1,4 +1,5 @@
 import requests
+import re
 
 def call_genderize(name):
 	"""Makes a call to the genderize.io API	to determine the probable 
@@ -22,3 +23,15 @@ def first_name_gender(name):
 		gender[n['name']] = n['gender']
 
 	return gender
+
+def extract_first_name(name):
+	"""If a string contains a name, returns that name."""
+	if not is_name(name):
+		return None
+
+	else:
+		return re.match("\w{1,20}(?=\s{1}\w{1,30})", name).group(0)
+
+def is_name(name):
+	"""Checks if a string contains a name."""
+	return re.match("\w{1,20}(?=\s{1}\w{1,30})", name)

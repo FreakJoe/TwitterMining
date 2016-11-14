@@ -1,1 +1,1 @@
-from . import streaming
+from . import streaming, analysis
