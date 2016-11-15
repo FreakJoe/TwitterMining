@@ -9,7 +9,8 @@ ACCESS_TOKEN = config.get('access_token')
 ACESS_TOKEN_SECRET = config.get('access_token_secret')
 
 class StreamListener(tweepy.StreamListener):
-	track = ''
+	def on_connect(self):
+		self.track = ''
 	
 	def on_status(self, status):
 		if status.lang != 'en':

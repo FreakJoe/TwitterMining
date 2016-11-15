@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from .tweet import Tweet, Base
+from .tweet import Tweet, TweetAnalysis, Base
 from .config import config
 
 class Database():
@@ -13,15 +13,31 @@ class Database():
 		db_session = sessionmaker(bind=self.engine)
 		self.session = db_session()
 
+	def add(self, object):
+		self.session.add(object)
+		self.commit()
+
 	def add_tweet(self, user, tweet, hashtags, search_topic):
 		new_tweet = Tweet(user=user, text=tweet, hashtags=hashtags, search_topic=search_topic)
-		self.session.add(new_tweet)
-		self.session.commit()
+		self.add(new_tweet)
+
+	def add_tweet_analysis(self, user, tweet, hashtags, gender, search_topic):
+		new_tweet_analysis = TweetAnalysis(user=user, text=tweet, hashtags=hashtags, gender=gender,  search_topic=search_topic)
+		self.add(new_tweet_analysis)
 
 	def get_tweets(self, limit=None):
 		if limit:
 			return
 
 		return self.session.query(Tweet).all()
+
+	def get_tweets_analysis(self, limit=None):
+		if limit:
+			return
+
+		return self.session.query(TweetAnalysis).all()
+
+	def commit(self):
+		self.session.commit()
 
 database = Database()

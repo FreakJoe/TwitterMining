@@ -10,3 +10,12 @@ class Tweet(Base):
 	text = Column(String)
 	hashtags = Column(ARRAY(String))
 	search_topic = Column(String)
+
+class TweetAnalysis(Base):
+	__tablename__ = 'tweet_analysis'
+	id = Column(Integer, primary_key=True)
+	user = Column(String)
+	text = Column(String)
+	hashtags = Column(ARRAY(String))
+	gender = Column(String)
+	search_topic = Column(String)
