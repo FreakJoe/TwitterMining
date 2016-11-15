@@ -13,8 +13,8 @@ class Database():
 		db_session = sessionmaker(bind=self.engine)
 		self.session = db_session()
 
-	def add_tweet(self, user, tweet, hashtags=[]):
-		new_tweet = Tweet(user=user, text=tweet, hashtags=hashtags)
+	def add_tweet(self, user, tweet, hashtags, search_topic):
+		new_tweet = Tweet(user=user, text=tweet, hashtags=hashtags, search_topic=search_topic)
 		self.session.add(new_tweet)
 		self.session.commit()
 

@@ -9,3 +9,4 @@ class Tweet(Base):
 	user = Column(String)
 	text = Column(String)
 	hashtags = Column(ARRAY(String))
+	search_topic = Column(String)
